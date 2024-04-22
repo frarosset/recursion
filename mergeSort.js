@@ -32,8 +32,26 @@ function mergeSortedArrays(arr1,arr2){
     return mergedArr;   
 }
 
+function splitArrayInHalf(arr){
+    let n = arr.length;
+    let half = Math.ceil(n/2);
+
+    let arrLeft = arr.slice(0,half);
+    let arrRight = arr.slice(half);
+
+    return [arrLeft, arrRight];
+}
+
+
 console.log(mergeSortedArrays([1,2,3],[4,5,6]));
 console.log(mergeSortedArrays([4,5,6],[1,2,3]));
 console.log(mergeSortedArrays([1,3,5],[2,4,6]));
 console.log(mergeSortedArrays([1,3],[2,4,5,6]));
 console.log(mergeSortedArrays([2,4,5,6],[1,3]));
+
+console.log(splitArrayInHalf([1]));
+console.log(splitArrayInHalf([1,2]));
+console.log(splitArrayInHalf([1,2,3]));
+console.log(splitArrayInHalf([1,2,3,4]));
+console.log(splitArrayInHalf([1,2,3,4,5]));
+console.log(splitArrayInHalf([1,2,3,4,5,6]));
