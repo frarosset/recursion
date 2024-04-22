@@ -42,16 +42,42 @@ function splitArrayInHalf(arr){
     return [arrLeft, arrRight];
 }
 
+function mergeSort(arr){
+    if (arr.length<=1)
+        return arr;
 
-console.log(mergeSortedArrays([1,2,3],[4,5,6]));
-console.log(mergeSortedArrays([4,5,6],[1,2,3]));
-console.log(mergeSortedArrays([1,3,5],[2,4,6]));
-console.log(mergeSortedArrays([1,3],[2,4,5,6]));
-console.log(mergeSortedArrays([2,4,5,6],[1,3]));
+    let [arrLeft,arrRight] = splitArrayInHalf(arr);
 
-console.log(splitArrayInHalf([1]));
-console.log(splitArrayInHalf([1,2]));
-console.log(splitArrayInHalf([1,2,3]));
-console.log(splitArrayInHalf([1,2,3,4]));
-console.log(splitArrayInHalf([1,2,3,4,5]));
-console.log(splitArrayInHalf([1,2,3,4,5,6]));
+    arrLeft = mergeSort(arrLeft);
+    //console.log('LEFT', arrLeft);
+
+    arrRight = mergeSort(arrRight);
+    //console.log('RIGHT', arrRight);
+
+    return mergeSortedArrays(arrLeft,arrRight);
+}
+
+if (0){
+    console.log(mergeSortedArrays([1,2,3],[4,5,6]));
+    console.log(mergeSortedArrays([4,5,6],[1,2,3]));
+    console.log(mergeSortedArrays([1,3,5],[2,4,6]));
+    console.log(mergeSortedArrays([1,3],[2,4,5,6]));
+    console.log(mergeSortedArrays([2,4,5,6],[1,3]));
+    
+    console.log(splitArrayInHalf([1]));
+    console.log(splitArrayInHalf([1,2]));
+    console.log(splitArrayInHalf([1,2,3]));
+    console.log(splitArrayInHalf([1,2,3,4]));
+    console.log(splitArrayInHalf([1,2,3,4,5]));
+    console.log(splitArrayInHalf([1,2,3,4,5,6]));
+}
+
+arr_test = [[3,2,1,13,8,5,0,1],
+            [105,79,100,110],
+            [],
+            [10]
+];
+for (let arr of arr_test){
+    console.log(arr, mergeSort(arr));
+}
+
